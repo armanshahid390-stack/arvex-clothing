@@ -138,4 +138,19 @@ input:focus,textarea:focus,select:focus{border-bottom-color:#111}
   margin:0 9px;
   color:rgba(255,255,255,.4);
 }
+  .footer-instagram{
+  display:inline-block;
+  margin-top:18px;
+  color:#fff;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.04em;
+  border-bottom:1px solid #555;
+  padding-bottom:6px;
+  transition:.25s;
+}
+
+.footer-instagram:hover{
+  border-color:#fff;
+}
 }
