@@ -126,4 +126,16 @@ input:focus,textarea:focus,select:focus{border-bottom-color:#111}
   .form-row{grid-template-columns:1fr}
   .quote-form{padding:25px 20px}
   .footer-bottom{flex-direction:column;gap:15px}
+  .hero-trust{
+  margin-top:28px;
+  font-size:10px;
+  letter-spacing:.16em;
+  font-weight:600;
+  color:rgba(255,255,255,.72);
+}
+
+.hero-trust span{
+  margin:0 9px;
+  color:rgba(255,255,255,.4);
+}
 }
