@@ -16,9 +16,9 @@ button,input,textarea,select{font:inherit}
 .hero{min-height:760px;height:100vh;max-height:920px;position:relative;background:#151515;color:#fff;display:flex;align-items:center;overflow:hidden}
 .hero-media{position:absolute;inset:0;background-image:url("https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=2200&q=85");background-size:cover;background-position:center}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.48) 55%,rgba(0,0,0,.3))}
-.hero-content{position:relative;z-index:2;max-width:900px;margin-left:10vw;padding-top:60px}
+.hero-content{position:relative;z-index:2;max-width:900px;margin-left:10vw;padding-top:25px}
 .eyebrow{font-size:11px;letter-spacing:.2em;font-weight:700;margin-bottom:22px}
-.hero h1{font-family:Manrope,sans-serif;font-size:clamp(45px,6.5vw,88px);line-height:.98;letter-spacing:-.055em;max-width:920px}
+.hero h1{font-family:Manrope,sans-serif;font-size:clamp(45px,6vw,82px);line-height:.98;letter-spacing:-.055em;max-width:900px}
 em{font-style:normal;font-weight:400}
 .hero-text{max-width:610px;color:#ddd;margin-top:28px;font-size:16px}
 .hero-actions{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
