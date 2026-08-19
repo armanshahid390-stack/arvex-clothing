@@ -25,31 +25,50 @@ document.getElementById("year").textContent = new Date().getFullYear();
 
 const form = document.getElementById("quote-form");
 
-form.addEventListener("submit", event => {
-  event.preventDefault();
+if (form) {
+  form.addEventListener("submit", async event => {
+    event.preventDefault();
 
-  const data = new FormData(form);
-  const subject = `Manufacturing Inquiry — ${data.get("brand") || "New Brand"}`;
+    const button = form.querySelector("button[type='submit']");
+    const originalText = button.innerHTML;
 
-  const body = [
-    `Hello ARVEX Clothing,`,
-    ``,
-    `I would like to discuss an apparel manufacturing project.`,
-    ``,
-    `Name: ${data.get("name")}`,
-    `Brand: ${data.get("brand")}`,
-    `Email: ${data.get("email")}`,
-    `WhatsApp: ${data.get("whatsapp") || "Not provided"}`,
-    `Country: ${data.get("country") || "Not provided"}`,
-    `Product: ${data.get("product")}`,
-    `Estimated Quantity: ${data.get("quantity") || "Not provided"}`,
-    ``,
-    `Project Details:`,
-    `${data.get("message")}`,
-    ``,
-    `Thank you.`
-  ].join("\n");
+    button.disabled = true;
+    button.innerHTML = "Sending...";
 
-  window.location.href =
-    `mailto:arvexclothing.co@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-});
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: {
+          Accept: "application/json"
+        }
+      });
+
+      if (response.ok) {
+        form.reset();
+
+        button.innerHTML = "Inquiry Sent ✓";
+
+        const note = form.querySelector(".form-note");
+        note.textContent =
+          "Thank you! Your inquiry has been received. We'll get back to you as soon as possible.";
+
+        setTimeout(() => {
+          button.innerHTML = originalText;
+          button.disabled = false;
+          note.textContent =
+            "Your inquiry will be sent securely. We'll get back to you as soon as possible.";
+        }, 5000);
+      } else {
+        throw new Error("Form submission failed");
+      }
+    } catch (error) {
+      button.disabled = false;
+      button.innerHTML = originalText;
+
+      const note = form.querySelector(".form-note");
+      note.textContent =
+        "Something went wrong. Please try again or contact us on WhatsApp.";
+    }
+  });
+}
