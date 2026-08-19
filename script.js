@@ -44,11 +44,17 @@ if (form) {
         }
       });
 
-      if (response.ok) {
-        form.reset();
+     if (response.ok) {
+  form.reset();
 
-        button.innerHTML = "Inquiry Sent ✓";
+  if (typeof gtag === "function") {
+    gtag("event", "quote_submission", {
+      event_category: "lead",
+      event_label: "Manufacturing Quote Form"
+    });
+  }
 
+  button.innerHTML = "Inquiry Sent ✓";
         const note = form.querySelector(".form-note");
         note.textContent =
           "Thank you! Your inquiry has been received. We'll get back to you as soon as possible.";
